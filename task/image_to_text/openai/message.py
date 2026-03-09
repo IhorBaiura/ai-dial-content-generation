@@ -1,10 +1,8 @@
 from dataclasses import dataclass
-from enum import Enum, StrEnum
+from enum import StrEnum
 from typing import Any
 
-from task._models.custom_content import CustomContent
 from task._models.message import Message
-from task._models.role import Role
 
 class ContentType(StrEnum):
     IMAGE = "image_url"
@@ -45,7 +43,7 @@ class TxtContent:
 
 @dataclass
 class ContentedMessage(Message):
-    content: list[ImgContent | TxtContent]
+    content: list[ImgContent | TxtContent] # type: ignore
 
     def to_dict(self) -> dict[str, Any]:
         return {
