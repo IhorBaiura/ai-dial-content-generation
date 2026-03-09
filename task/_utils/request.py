@@ -1,6 +1,7 @@
+from typing import Any
 
 
-def print_request(endpoint: str, request_data: dict, headers: dict):
+def print_request(endpoint: str, request_data: dict[str, Any], headers: dict[str, str]):
     """Pretty print the request details."""
     print("\n" + "="*50 + " REQUEST " + "="*50)
     print(f"🔗 Endpoint: {endpoint}")
