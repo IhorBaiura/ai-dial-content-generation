@@ -21,16 +21,16 @@ class Attachment:
 class CustomContent:
     attachments: list[Attachment]
 
-    def to_dict(self) -> dict[str, list[dict]]:
+    def to_dict(self) -> dict[str, list[dict[str, str | None]]]:
         return {
             "attachments": [attachment.to_dict() for attachment in self.attachments]
         }
 
     @classmethod
-    def from_dict(cls, data: dict) -> "CustomContent":
+    def from_dict(cls, data: dict[str, list[dict[str, str | None]]]) -> "CustomContent":
         attachments = []
         if attachment_data := data.get("attachments"):
-            if isinstance(attachment_data, list):
+            if isinstance(attachment_data, list): # type: ignore
                 attachments = [
                     Attachment(**{k: v for k, v in attachment.items()
                                   if k in ["title", "data", "type", "url"]})

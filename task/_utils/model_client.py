@@ -21,7 +21,7 @@ class DialModelClient:
         self._api_key = api_key
 
 
-    def get_completion(self, messages: list[Message], custom_fields: dict[str, Any] | None = None, **kwargs) -> Message:
+    def get_completion(self, messages: list[Message], custom_fields: dict[str, Any] | None = None, **kwargs: Any) -> Message:
         headers = {
             "api-key": self._api_key,
             "Content-Type": "application/json"

@@ -24,7 +24,7 @@ class Message:
         return result
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Message":
+    def from_dict(cls, data: dict[str, Any]) -> "Message":
         return cls(
             role=Role(data["role"]),
             content=data.get("content", ""),
